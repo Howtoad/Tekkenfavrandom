@@ -69,6 +69,8 @@ function App() {
       width: 100vw;
       height: 100vh;
       margin: 0 auto;
+      background-image: url("/images/chars/shatteredglass.jpg");
+      background-repeat: round;
       & img {
         max-width: 100vw;
       }
@@ -76,12 +78,28 @@ function App() {
         display: grid;
         max-width: 1420px;
         max-height: 300px;
+        position: absolute;
+        left: 5%;
+        top: 58%;
         grid-template-columns: repeat(19, 70px);
       }
-      .maingrid > div {
+      & .maingrid > div {
+        /* border-width: 4px;
+        border-color: transparent;
+        border-style: solid; */
         width: 75px;
       }
-      .maingrid > div > img {
+      & .maingrid > div:hover {
+        /* border-width: 4px;
+        border-style: inset;
+        border-color: #00de0d;
+        border-image: linear-gradient(#00de0d40, #00de0d) 1; */
+        -webkit-box-shadow: 0px 0px 0px 5px #00de0d70;
+        -moz-box-shadow: 0px 0px 0px 5px #00de0d70;
+        box-shadow: 0px 0px 0px 5px #00de0d70;
+        cursor: pointer;
+      }
+      & .maingrid > div > img {
         width: 100%;
       }
       & .kunimitsu {
@@ -93,6 +111,22 @@ function App() {
       & .rbutton {
         grid-row: 2/4;
         grid-column: 10/11;
+        display: Grid;
+        background-color: #182a2f;
+        background: linear-gradient(
+          90deg,
+          rgba(24, 42, 47, 1) 0%,
+          rgba(52, 71, 80, 1) 100%
+        );
+      }
+      & .rbutton > h2 {
+        color: #60858c;
+        font-size: 64px;
+        font-weight: bold;
+        height: 64px;
+        margin-top: -20px;
+        justify-self: center;
+        align-self: center;
       }
     `,
   };
@@ -172,7 +206,9 @@ function App() {
           <div className="kazuya">
             <img src="images/chars/kazuya_portrait.webp"></img>
           </div>
-          <div className="rbutton">{/* future random button */}</div>
+          <div className="rbutton">
+            <h2>?</h2>
+          </div>
           <div className="heihachi">
             <img src="images/chars/heihachi_portrait.webp"></img>
           </div>
@@ -260,7 +296,6 @@ function App() {
           {/* future left bottom row chars */}
           {/* future right bottom row chars */}
         </div>
-        <img src="https://external-preview.redd.it/uKIgQzhXxG4Gw9E8wkPLgkMiDqdNI2tLhszKi_7oTuA.png?format=pjpg&auto=webp&s=e3cc0ead6e6f96e0053898bcd2e0816db5843bc3"></img>
       </div>
     </div>
   );
