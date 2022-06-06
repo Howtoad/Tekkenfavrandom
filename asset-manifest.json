@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/tekkenfavrandom/static/css/main.ffe34ec7.css",
+    "main.js": "/tekkenfavrandom/static/js/main.e7d3b857.js",
+    "index.html": "/tekkenfavrandom/index.html",
+    "main.ffe34ec7.css.map": "/tekkenfavrandom/static/css/main.ffe34ec7.css.map",
+    "main.e7d3b857.js.map": "/tekkenfavrandom/static/js/main.e7d3b857.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ffe34ec7.css",
+    "static/js/main.e7d3b857.js"
+  ]
+}
