@@ -147,7 +147,7 @@ function App() {
         <div className="maingrid" onClick={swapSplashOnClick}>
           {arrayOfChars.map((char) => {
             return (
-              <div className={char}>
+              <div className={char} key={char}>
                 <img src={`/images/chars/${char}_portrait.webp`} alt={char} />
               </div>
             );
