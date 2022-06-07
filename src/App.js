@@ -1,9 +1,12 @@
 import "./App.css";
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
+import { useState } from "react";
 
 function App() {
+  let [splash, setSplash] = useState("");
   const swapSplashOnClick = (e) => {
+    setSplash("/images/chars/" + e.target.alt + "_splash.png");
     const splash = document.getElementById("splash");
     splash.classList.toggle("hidden");
     console.log(e.target.alt);
@@ -138,9 +141,7 @@ function App() {
   return (
     <div className="App">
       <div css={styles.wrapper}>
-        <div id="splash">
-          <img src="/images/chars/negan_splash.png" alt="splash" />
-        </div>
+        <div id="splash">{splash && <img src={splash} alt="splash" />}</div>
         <div className="maingrid" onClick={swapSplashOnClick}>
           {arrayOfChars.map((char) => {
             return (
