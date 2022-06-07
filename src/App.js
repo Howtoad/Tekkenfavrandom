@@ -1,16 +1,10 @@
 import "./App.css";
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
-import { useState } from "react";
+import { useRef, useState } from "react";
+import Fadein from "./components/Fadein";
 
 function App() {
-  let [splash, setSplash] = useState("");
-  const swapSplashOnClick = (e) => {
-    setSplash("/images/chars/" + e.target.alt + "_splash.png");
-    const splash = document.getElementById("splash");
-    splash.classList.toggle("hidden");
-    console.log(e.target.alt);
-  };
   const arrayOfChars = [
     "kunimitsu",
     "ganryu",
@@ -65,7 +59,33 @@ function App() {
     "eddy",
     "panda",
   ];
+  let [isVisible, setIsVisible] = useState(false);
+  let [splash, setSplash] = useState("");
+  const swapSplashOnClick = (e) => {
+    swapSplashImage(e.target.alt);
+  };
+  const swapSplashImage = (char) => {
+    setSplash("/images/chars/" + char + "_splash.png");
+    setIsVisible(false);
+    setTimeout(() => {
+      setIsVisible(true);
+    }, 30);
+  };
+  const getRandomItem = (arr) => {
+    return arr.filter((x) => x !== "rbutton")[
+      Math.floor(Math.random() * (arr.length - 1))
+    ];
+  };
 
+  const myInterval = useRef(null);
+  const swapChar20TimesPerSecond = () => {
+    myInterval.current = setInterval(() => {
+      swapSplashImage(getRandomItem(arrayOfChars));
+    }, 300);
+  };
+  const clearMyInterval = () => {
+    clearInterval(myInterval.current);
+  };
   const styles = {
     wrapper: css`
       width: 100vw;
@@ -116,6 +136,7 @@ function App() {
         grid-column: 10/11;
         display: Grid;
         background-color: #182a2f;
+        text-align: center;
         background: linear-gradient(
           90deg,
           rgba(24, 42, 47, 1) 0%,
@@ -124,31 +145,45 @@ function App() {
       }
       & .rbutton > h2 {
         color: #60858c;
-        font-size: 64px;
+        font-size: 78px;
         font-weight: bold;
-        height: 64px;
-        margin-top: -20px;
-        justify-self: center;
-        align-self: center;
+        height: 100%;
+        width: 100%;
+        padding-top: 20px;
       }
       & #splash {
         position: absolute;
         top: 15%;
         left: 20%;
       }
+      & #splash > img {
+        width: 336px;
+        height: 336px;
+      }
     `,
   };
   return (
     <div className="App">
       <div css={styles.wrapper}>
-        <div id="splash">
-          <img src={splash} alt="splash"></img>
-        </div>
+        <Fadein splash={splash} isVisible={isVisible} />
         <div className="maingrid" onClick={swapSplashOnClick}>
           {arrayOfChars.map((char) => {
             return (
               <div className={char} key={char}>
-                <img src={`/images/chars/${char}_portrait.webp`} alt={char} />
+                {char == "rbutton" ? (
+                  <h2
+                    onMouseEnter={swapChar20TimesPerSecond}
+                    onMouseLeave={clearMyInterval}
+                  >
+                    ?
+                  </h2>
+                ) : (
+                  <img
+                    src={`/images/chars/${char}_portrait.webp`}
+                    alt={char}
+                    onMouseEnter={swapSplashOnClick}
+                  />
+                )}
               </div>
             );
           })}
