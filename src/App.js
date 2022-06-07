@@ -3,7 +3,7 @@ import "./App.css";
 import { css } from "@emotion/react";
 
 function App() {
-  const topRowChars = [
+  const arrayOfChars = [
     "kunimitsu",
     "ganryu",
     "zafina",
@@ -19,8 +19,6 @@ function App() {
     "leroy",
     "fahkumram",
     "lidia",
-  ];
-  const LeftMiddleRowChars = [
     "raven",
     "nina",
     "yoshimitsu",
@@ -30,8 +28,6 @@ function App() {
     "shaheen",
     "akuma",
     "kazuya",
-  ];
-  const RightMiddleRowChars = [
     "heihachi",
     "kazumi",
     "chloe",
@@ -41,8 +37,6 @@ function App() {
     "jack",
     "lee",
     "kuma",
-  ];
-  const leftBottomRowChars = [
     "miguel",
     "bob",
     "bryan",
@@ -52,8 +46,6 @@ function App() {
     "josie",
     "katarina",
     "jin",
-  ];
-  const rightBottomRowChars = [
     "deviljin",
     "claudio",
     "gigas",
@@ -134,7 +126,9 @@ function App() {
   return (
     <div className="App">
       <div css={styles.wrapper}>
-        <div className="splash"></div>
+        <div className="splash">
+          <img src="/images/chars/kunimitsu_splash.png" alt="splash" />
+        </div>
         <div className="maingrid">
           <div className="kunimitsu">
             <img src="images/chars/kunimitsu_portrait.webp"></img>
