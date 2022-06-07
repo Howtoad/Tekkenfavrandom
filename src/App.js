@@ -141,7 +141,9 @@ function App() {
   return (
     <div className="App">
       <div css={styles.wrapper}>
-        <div id="splash">{splash && <img src={splash} alt="splash" />}</div>
+        <div id="splash">
+          <img src={splash} alt="splash"></img>
+        </div>
         <div className="maingrid" onClick={swapSplashOnClick}>
           {arrayOfChars.map((char) => {
             return (
