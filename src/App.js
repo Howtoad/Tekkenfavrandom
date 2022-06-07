@@ -82,6 +82,7 @@ function App() {
         left: 5%;
         top: 58%;
         grid-template-columns: repeat(19, 70px);
+        z-index: 50;
       }
       & .maingrid > div {
         /* border-width: 4px;
@@ -133,6 +134,7 @@ function App() {
   return (
     <div className="App">
       <div css={styles.wrapper}>
+        <div className="splash"></div>
         <div className="maingrid">
           <div className="kunimitsu">
             <img src="images/chars/kunimitsu_portrait.webp"></img>
